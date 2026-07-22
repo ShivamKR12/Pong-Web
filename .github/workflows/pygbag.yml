@@ -9,7 +9,7 @@ on:
       - "favicons/**"
       - ".gitignore"
       - ".LICENSE"
-      - ".pygbag-README.md"
+      - "pygbag-README.md"
   workflow_dispatch:
 
 permissions:

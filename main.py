@@ -5,9 +5,7 @@
 # ///
 
 
-import pygame, sys, random
-
-import asyncio
+import pygame, sys, random, asyncio
 
 
 async def main():
@@ -228,19 +226,18 @@ async def main():
     pygame.init()
     clock = pygame.time.Clock()
 
-    screen_width = 1300
-    screen_height = 650
-
     if __ANDROID__:
-        screen = pygame.display.set_mode((screen_width, screen_height),
-                                        pygame.SCALED | pygame.FULLSCREEN)
+        screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
     elif __EMSCRIPTEN__:
-        screen = pygame.display.set_mode((screen_width, screen_height), 0)
+        screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
     else:
-        screen = pygame.display.set_mode((screen_width, screen_height),
-                                        pygame.SCALED | pygame.RESIZABLE)
-    
+        screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+
     pygame.display.set_caption("Pong")
+    pygame.display.set_icon(pygame.image.load("favicon.png"))
+
+    screen_width = screen.get_width()
+    screen_height = screen.get_height()
 
     bg_color = pygame.Color("#2F373F")
     accent_color = (27, 35, 43)

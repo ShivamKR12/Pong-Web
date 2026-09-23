@@ -18,7 +18,7 @@ permissions:
 jobs:
   build-pygbag:
     name: Build for Emscripten pygbag runtime
-    if: github.event_name != 'push' || (!contains(github.event.head_commit.message, '[skip ci]') && !contains(github.event.head_commit.message, '[ci skip]'))
+
 
     runs-on: ubuntu-latest
 
@@ -34,3 +34,12 @@ jobs:
       with:
         branch: gh-pages
         folder: build/web
+
+    - name: Setup Butler
+      uses: remarkablegames/setup-butler@v1
+
+    - name: Publish HTML to itch.io via Butler
+      env:
+        BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
+      run: |
+        butler push build/web shivamkr12/pong:html --userversion web-v1.0.${{ github.run_number }}

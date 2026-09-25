@@ -3,13 +3,14 @@ name: pygbag_build
 on:
   push:
     branches:
-      - web
-    paths-ignore:
-      - "README.md"
-      - "favicons/**"
-      - ".gitignore"
-      - ".LICENSE"
-      - "pygbag-README.md"
+      - main
+    paths:
+      - '**.py'
+      - '**.spec'
+      - '**.ini'
+      - 'requirements.txt'
+      - 'setup.py'
+      - '.github/workflows/*.yml'
   workflow_dispatch:
 
 permissions:
